@@ -26,10 +26,10 @@ pipeline{
                   script{
 		 
                    sh 'docker build . -t deekshithsn/devops-training:$Docker_tag'
-		   withCredentials([string(credentialsId: 'docker_password', variable: 'docker_password')]) {
+		   withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
 				    
-				  sh 'docker login -u deekshithsn -p $docker_password'
-				  sh 'docker push deekshithsn/devops-training:$Docker_tag'
+				  sh 'docker login -u raaghavendra -p $dockerhub'
+				  sh 'docker push raaghavendra/devops-training:$Docker_tag'
 			}
                        }
                     }
