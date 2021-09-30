@@ -25,11 +25,11 @@ pipeline{
               steps{
                   script{
 		 
-                   sh 'docker build . -t deekshithsn/devops-training:$Docker_tag'
+                   sh 'docker build . -t raaghavendra/testing:$Docker_tag'
 		   withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
 				    
 				  sh 'docker login -u raaghavendra -p $dockerhub'
-				  sh 'docker push raaghavendra/devops-training:$Docker_tag'
+				  sh 'docker push raaghavendra/testing:$Docker_tag'
 			}
                        }
                     }
