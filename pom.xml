@@ -13,7 +13,6 @@
         <revision>${baseRevision}-SNAPSHOT</revision>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <sonarscanner.version>3.7.0.1746</sonarscanner.version>
-        <sonar.projectKey>lu.amazon.aws.demo:WebApp:${project.artifactId}</sonar.projectKey>
         <sonar.projectName>demo-idm-login</sonar.projectName>
     </properties>
   <dependencies>
@@ -68,20 +67,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
  //   <finalName>WebApp</finalName>
   </build>
 </project>
