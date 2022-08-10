@@ -7,12 +7,6 @@
   <version>1.0-SNAPSHOT</version>
   <name>WebApp Maven Webapp</name>
   <url>http://maven.apache.org</url>
-      <properties>
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <sonarscanner.version>3.7.0.1746</sonarscanner.version>
-        <sonar.projectName>demo-idm-login</sonar.projectName>
-    </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
