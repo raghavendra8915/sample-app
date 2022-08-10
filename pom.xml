@@ -9,8 +9,6 @@
   <url>http://maven.apache.org</url>
       <properties>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-        <baseRevision>1.0</baseRevision>
-        <revision>${baseRevision}-SNAPSHOT</revision>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <sonarscanner.version>3.7.0.1746</sonarscanner.version>
         <sonar.projectName>demo-idm-login</sonar.projectName>
@@ -24,19 +22,6 @@
     </dependency>
   </dependencies>
   
-      <profiles>
-        <profile>
-            <id>jenkins</id>
-            <activation>
-                <property>
-                    <name>env.BUILD_NUMBER</name>
-                </property>
-            </activation>
-            <properties>
-                <revision>${baseRevision}-${env.GIT_BRANCH}-${env.BUILD_NUMBER}-${env.BUILD_TIMESTAMP}</revision>
-            </properties>
-        </profile>
-    </profiles>
   
   <build>
     <finalName>WebApp</finalName>
