@@ -7,6 +7,15 @@
   <version>1.0-SNAPSHOT</version>
   <name>WebApp Maven Webapp</name>
   <url>http://maven.apache.org</url>
+      <properties>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <baseRevision>1.0</baseRevision>
+        <revision>${baseRevision}-SNAPSHOT</revision>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <sonarscanner.version>3.7.0.1746</sonarscanner.version>
+        <sonar.projectKey>lu.amazon.aws.demo:WebApp:${project.artifactId}</sonar.projectKey>
+        <sonar.projectName>demo-idm-login</sonar.projectName>
+    </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -15,7 +24,64 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+      <profiles>
+        <profile>
+            <id>jenkins</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <properties>
+                <revision>${baseRevision}-${env.GIT_BRANCH}-${env.BUILD_NUMBER}-${env.BUILD_TIMESTAMP}</revision>
+            </properties>
+        </profile>
+    </profiles>
+  
   <build>
-    <finalName>WebApp</finalName>
+      <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.diffplug.spotless</groupId>
+                    <artifactId>spotless-maven-plugin</artifactId>
+                    <version>${spotless.version}</version>
+                    <configuration>
+                        <java>
+                            <!-- optional: limit format enforcement to just the files changed by this feature branch -->
+                            <ratchetFrom>origin/master</ratchetFrom>
+                            <googleJavaFormat>
+                                <version>1.8</version>
+                                <style>GOOGLE</style>
+                            </googleJavaFormat>
+                        </java>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonarscanner.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+ //   <finalName>WebApp</finalName>
   </build>
 </project>
