@@ -16,6 +16,19 @@
     </dependency>
   </dependencies>
   <build>
+    <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonarscanner.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     <finalName>WebApp</finalName>
   </build>
 </project>
