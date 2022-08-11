@@ -32,25 +32,39 @@
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>${sonarscanner.version}</version>
                 </plugin>
-             <plugin>
-    <groupId>org.jacoco</groupId>
-    <artifactId>jacoco-maven-plugin</artifactId>
-    <version>0.7.7.201606060606</version>
-    <executions>
-        <execution>
+             <build>
+  <pluginManagement>
+    <plugins>
+      ...
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.3</version>
+        <executions>
+          <execution>
             <goals>
-                <goal>prepare-agent</goal>
+              <goal>prepare-agent</goal>
             </goals>
-        </execution>
-        <execution>
+          </execution>
+          <execution>
             <id>report</id>
-            <phase>prepare-package</phase>
+            <phase>test</phase>
             <goals>
-                <goal>report</goal>
+              <goal>report</goal>
             </goals>
-        </execution>
-    </executions>
-</plugin>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </pluginManagement>
+  <plugins>
+    ...
+    <plugin>
+      <groupId>org.jacoco</groupId>
+      <artifactId>jacoco-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</build>
             </plugins>
         </pluginManagement>
     <finalName>WebApp</finalName>
