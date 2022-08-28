@@ -1,0 +1,14 @@
+---
+ - name: Deploy war  
+   hosts: DEMOSERVER  
+   tasks:
+     - name: Stop Tomcat  
+       command: /opt/apache-tomcat-9.0.65/bin/shutdown.sh
+
+     - name: Copy the war file  
+       copy:  
+         src: /home/ec2-user/workspace/demo2/target/WebApp.war  
+         dest: /opt/apache-tomcat-9.0.65/webapps  
+
+     - name: Start Tomcat  
+       command: /opt/apache-tomcat-9.0.65/bin/startup.sh  
