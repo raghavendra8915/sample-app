@@ -19,7 +19,7 @@ spec:
         image: 347036700304.dkr.ecr.us-east-1.amazonaws.com/test/sample:latest
         imagePullPolicy: Always
       imagePullSecrets:
-        - name: regcred
+      - name: regcred
         ports:
         - containerPort: 8085
           name: http
