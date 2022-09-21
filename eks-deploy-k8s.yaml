@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-springboot-app
-        image: 347036700304.dkr.ecr.us-east-1.amazonaws.com/test/sample:latest
+        image: 371699778015.dkr.ecr.us-east-1.amazonaws.com/springboot:latest
         ports:
         - containerPort: 8085
           name: http
