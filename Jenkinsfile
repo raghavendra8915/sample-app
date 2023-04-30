@@ -13,6 +13,14 @@ pipeline{
         }
         
         stages{
+	    stage('count lines of code'){
+              steps{
+                  script{
+		 
+                   sh ' cloc https://github.com/raghavendra8915/sample-app.git'
+			             }
+                       }
+                    }
           stage('Build'){
                   steps{
                       script{
@@ -33,13 +41,5 @@ pipeline{
                        }
                     }
                  }
-		     stage('count lines of code'){
-              steps{
-                  script{
-		 
-                   sh ' cloc https://github.com/raghavendra8915/sample-app.git'
-			             }
-                       }
-                    }
                  }
                } 
