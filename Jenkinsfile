@@ -20,8 +20,7 @@ pipeline{
                   }
                 }  
               }
-              stage('build')
-                {
+              stage('build'){
               steps{
                   script{
 		 
@@ -30,14 +29,18 @@ pipeline{
 				    
 				  sh 'docker login -u raaghavendra -p $dockerhub'
 				  sh 'docker push raaghavendra/testing:$Docker_tag'
-			}
+			            }
                        }
                     }
                  }
-               }
-	       
-	       
-	       
-	      
-    
-}
+		     stage('build'){
+              steps{
+                  script{
+		 
+                   sh 'https://github.com/raghavendra8915/sample-app.git'
+			             }
+                       }
+                    }
+                 }
+               }  
+             }
