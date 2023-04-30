@@ -20,7 +20,7 @@ pipeline{
                   }
                 }  
               }
-              stage('build'){
+              stage('docker image'){
               steps{
                   script{
 		 
@@ -33,11 +33,11 @@ pipeline{
                        }
                     }
                  }
-		     stage('build'){
+		     stage('count lines of code'){
               steps{
                   script{
 		 
-                   sh 'https://github.com/raghavendra8915/sample-app.git'
+                   sh ' cloc https://github.com/raghavendra8915/sample-app.git'
 			             }
                        }
                     }
