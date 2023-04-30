@@ -17,7 +17,7 @@ pipeline{
               steps{
                   script{
 		 
-                   sh ' cloc https://github.com/raghavendra8915/sample-app.git'
+                   sh ' cloc sample-app'
 			             }
                        }
                     }
