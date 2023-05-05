@@ -17,7 +17,8 @@ pipeline{
               steps{
                   script{
 		 
-                   sh ' cloc /var/lib/jenkins/workspace/test'
+//                   sh ' cloc /var/lib/jenkins/workspace/test'
+	             sh 'cloc https://github.com/raghavendra8915/sample-app.git'
 			             }
                        }
                     }
