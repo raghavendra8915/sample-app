@@ -4,6 +4,7 @@ node {
 }
 pipeline {
     agent any;
+    cleanWs()
     parameters { 
         string(defaultValue: "https://github.com", description: 'Whats the github URL?', name: 'URL')
 		string(defaultValue: "master", description: 'Whats the the branch name?', name: 'BRANCH')
