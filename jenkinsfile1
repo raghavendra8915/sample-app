@@ -3,7 +3,8 @@ pipeline {
     parameters { 
         string(defaultValue: "https://github.com", description: 'Whats the github URL?', name: 'URL')
 		string(defaultValue: "master", description: 'Whats the the branch name?', name: 'BRANCH')
-		string(defaultValue: "/var/lib/jenkins/", description: 'path of the workspace', name: 'WORKSPACE')
+//		string(defaultValue: "/var/lib/jenkins/", description: 'path of the workspace', name: 'WORKSPACE')
+		string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
     }
     stages {
         stage('Checkout Git repository') {
@@ -22,7 +23,7 @@ pipeline {
 		 
                sh ' cloc  --csv --report-file=test.csv /var/lib/jenkins/workspace/test'
 //	             sh 'cloc https://github.com/raghavendra8915/sample-app.git'
-	             sh 'cloc  --csv --report-file=test.csv "workspace: "${params.WORKSPACE}""'
+	             sh 'cloc  --csv --report-file=test.csv "${env.WORKSPACE}"'
 			             }
                                  }
                              }
