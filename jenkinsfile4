@@ -1,8 +1,9 @@
 #!groovy
 
 pipeline {
-	tool name: 'mvn', type: 'maven'
-
+	environment{
+        PATH = "/opt/apache-maven-3.6.3/bin:$PATH"
+    }
   agent any ;
     options {
         timeout(time: 24, unit: 'HOURS')
