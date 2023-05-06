@@ -1,0 +1,40 @@
+currentBuild.displayName = "Final_Demo # "+currentBuild.number
+
+   def getDockerTag(){
+        def tag = sh script: 'git rev-parse HEAD', returnStdout: true
+        return tag
+        }
+
+pipeline {
+    agent any
+
+
+    parameters { 
+        string(defaultValue: "https://github.com", description: 'Whats the github URL?', name: 'URL')
+    }
+
+
+    stages {
+        stage('Checkout Git repository') {
+           steps {
+                git branch: 'master', url: "${params.URL}"
+            }
+        }
+
+        stage('echo') {
+           steps {
+                echo "${params.URL}"
+            }
+        }
+		    stage('count lines of code'){
+              steps{
+                  script{
+		 
+ //              sh ' cloc  --csv --report-file=test.csv /var/lib/jenkins/workspace/test'
+//	             sh 'cloc https://github.com/raghavendra8915/sample-app.git'
+	             sh 'cloc  --csv --report-file=test.csv "$sample-app"'
+			             }
+                       }
+                    }
+    }
+}
