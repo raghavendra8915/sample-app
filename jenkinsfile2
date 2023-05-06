@@ -4,11 +4,23 @@ node {
 }
 pipeline {
     agent any;
-    parameters {
-        string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
+    parameters { 
+        string(defaultValue: "https://github.com", description: 'Whats the github URL?', name: 'URL')
+		string(defaultValue: "master", description: 'Whats the the branch name?', name: 'BRANCH')
+		string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
     }
     stages {
-        stage('access env variable') {
+        stage('Checkout Git repository') {
+           steps {
+                git branch: "${params.BRANCH}", url: "${params.URL}"
+            }
+        }
+        stage('echo') {
+           steps {
+                echo "${params.URL}"
+            }
+        }
+		        stage('access env variable') {
             steps {
                 // in groovy
                 echo "${env.WORKSPACE}"
@@ -22,5 +34,15 @@ pipeline {
                 }
             }
         }
-    }
-}
+        stage('count lines of code'){
+              steps{
+                  script{
+		 
+ //              sh ' cloc  --csv --report-file=test.csv /var/lib/jenkins/workspace/test'
+//	             sh 'cloc https://github.com/raghavendra8915/sample-app.git'
+	             sh 'cloc  --csv --report-file=test.csv "${env.WORKSPACE}"'
+			             }
+                                 }
+                             }
+                        }
+                     }
