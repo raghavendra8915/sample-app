@@ -1,13 +1,9 @@
-//def workspace
-//node {
-//    workspace = env.WORKSPACE
-//}
+
 pipeline {
     agent any;
     parameters { 
         string(defaultValue: "https://github.com", description: 'Whats the github URL?', name: 'URL')
 		string(defaultValue: "master", description: 'Whats the the branch name?', name: 'BRANCH')
-//		string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
     }
     stages {
         stage('Checkout Git repository') {
@@ -37,10 +33,6 @@ pipeline {
         stage('count lines of code'){
               steps{
                   script{
-		 
- //              sh ' cloc  --csv --report-file=test.csv /var/lib/jenkins/workspace/test'
-//	             sh 'cloc https://github.com/raghavendra8915/sample-app.git'
-//	             sh 'cloc  --csv --report-file=test.csv ${env.WORKSPACE}'
                      sh 'cloc  --csv --report-file=test.csv $WORKSPACE'
 			             }
                                  }
