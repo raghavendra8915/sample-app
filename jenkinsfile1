@@ -4,13 +4,14 @@ pipeline {
 
     parameters { 
         string(defaultValue: "https://github.com", description: 'Whats the github URL?', name: 'URL')
+		string(defaultValue: "master", description: 'Whats the the branch name?', name: 'BRANCH')
     }
 
 
     stages {
         stage('Checkout Git repository') {
            steps {
-                git branch: 'main', url: "${params.URL}"
+                git branch: "${params.BRANCH}", url: "${params.URL}"
             }
         }
 
