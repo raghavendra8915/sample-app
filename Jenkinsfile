@@ -11,18 +11,6 @@ pipeline{
         environment{
 	    Docker_tag = getDockerTag()
         }
-        
-        stages{
-	    stage('count lines of code'){
-              steps{
-                  script{
-		 
- //                  sh ' cloc  --csv --report-file=test.csv /var/lib/jenkins/workspace/test'
-//	             sh 'cloc https://github.com/raghavendra8915/sample-app.git'
-	             sh 'cloc  --csv --report-file=test.csv "$sample-app"'
-			             }
-                       }
-                    }
           stage('Build'){
                   steps{
                       script{
