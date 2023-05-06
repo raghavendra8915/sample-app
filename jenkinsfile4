@@ -1,6 +1,7 @@
 #!groovy
 
 pipeline {
+	tool name: 'mvn', type: 'maven'
 
   agent any ;
     options {
