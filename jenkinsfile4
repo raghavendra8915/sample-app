@@ -1,0 +1,32 @@
+#!groovy
+
+pipeline {
+
+  agent any ;
+    options {
+        timeout(time: 24, unit: 'HOURS')
+         }
+    stages {
+		stage('clean') {
+		   steps{
+			script{
+			       sh 'mvn -X clean'
+      			}
+			}
+		}
+		stage('test') {
+		   steps{
+			script{
+			       sh 'mvn -X test '
+      			}
+			}
+		}
+		stage('Install') {
+		   steps{
+			script{
+			        sh 'mvn -X -DskipTests'
+                }
+			}
+		}
+    }
+}
