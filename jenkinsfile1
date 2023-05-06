@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout Git repository') {
            steps {
-                git branch: 'master', url: "${params.URL}"
+                git branch: 'main', url: "${params.URL}"
             }
         }
 
